@@ -30,6 +30,7 @@ public class PartidaXadrez {
 		Posicao original = originalPosicao.toPosicao();
 		Posicao proxima = proximaPosicao.toPosicao();
 		validarOriginalPosicao(original);
+		validarProximaPosicao(original, proxima);
 		Peca pecaCapturada = fazerMovimento(original, proxima);
 		return (PecaXadrez)pecaCapturada;
 	}
@@ -50,6 +51,11 @@ public class PartidaXadrez {
 		}
 	}
 	
+	private void validarProximaPosicao(Posicao original, Posicao proxima) {
+		if(!tabuleiro.peca(original).possibilidadesMovimento(proxima)) {
+		throw new XadrezException("A peça escolhida não pode se mover para o destino ");
+	}
+	}
 	private void lugarNovaPeca(char coluna, int linha, PecaXadrez peca ) {
 		tabuleiro.placePeca(peca, new PosicaoXadrez(coluna, linha).toPosicao());
 	}
