@@ -1,15 +1,17 @@
 package xadrez;
 
 
-import jogotabuleiro.Peca;
-import jogotabuleiro.Posicao;
-import jogotabuleiro.Tabuleiro;
-import pecas.xadrez.Rei;
-import pecas.xadrez.Torre;
-import pecas.xadrez.Peao;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Collectors;
+
+import jogotabuleiro.Peca;
+import jogotabuleiro.Posicao;
+import jogotabuleiro.Tabuleiro;
+import pecas.xadrez.Bispo;
+import pecas.xadrez.Peao;
+import pecas.xadrez.Rei;
+import pecas.xadrez.Torre;
 
 public class PartidaXadrez {
      
@@ -114,7 +116,7 @@ public class PartidaXadrez {
 			throw new XadrezException("Não tem peça no ponto original");
 		}
 		if (jogadorAtual != ((PecaXadrez)tabuleiro.peca(posicao)).getColor()) {
- 			throw new XadrezException("A peça escolhida não é sua, otario XD");
+ 			throw new XadrezException("A peça escolhida não é sua.");
  		}
 		if(!tabuleiro.peca(posicao).temAlgumMovimentoPossivel()) {
 			throw new XadrezException("Não tem movimentos possiveis para essa peça");
@@ -187,7 +189,9 @@ public class PartidaXadrez {
 	}
 	private void setupInicial() {
 		  lugarNovaPeca('a', 1, new Torre(tabuleiro, Color.WHITE));
+		  lugarNovaPeca('c', 1, new Bispo(tabuleiro, Color.WHITE));
 		  lugarNovaPeca('e', 1, new Rei(tabuleiro, Color.WHITE));
+		  lugarNovaPeca('f', 1, new Bispo(tabuleiro, Color.WHITE));
 		  lugarNovaPeca('h', 1, new Torre(tabuleiro, Color.WHITE));
 		  lugarNovaPeca('a', 2, new Peao(tabuleiro, Color.WHITE));
 		  lugarNovaPeca('b', 2, new Peao(tabuleiro, Color.WHITE));
@@ -199,7 +203,9 @@ public class PartidaXadrez {
 		  lugarNovaPeca('h', 2, new Peao(tabuleiro, Color.WHITE));
 	         
 		  lugarNovaPeca('a', 8, new Torre(tabuleiro, Color.BLACK));
+		  lugarNovaPeca('c', 8, new Bispo(tabuleiro, Color.BLACK));
 		  lugarNovaPeca('e', 8, new Rei(tabuleiro, Color.BLACK));
+		  lugarNovaPeca('f', 8, new Bispo(tabuleiro, Color.BLACK));
 		  lugarNovaPeca('h', 8, new Torre(tabuleiro, Color.BLACK));
 		  lugarNovaPeca('a', 7, new Peao(tabuleiro, Color.BLACK));
 		  lugarNovaPeca('b', 7, new Peao(tabuleiro, Color.BLACK));
